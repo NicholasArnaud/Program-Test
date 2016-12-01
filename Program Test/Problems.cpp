@@ -82,7 +82,7 @@ int main()
 	reverse(Rev, 15);
 
 	//Problem 4
-	Cat Namez[26];
+	
 	Namer();
 
 
@@ -95,6 +95,7 @@ int main()
 
 	//Problem 7
 	std::string stg[5] = {"Hello","Nope","Jack","Not Again","Bodom"};
+
 	
 
 	return 1;
@@ -113,12 +114,7 @@ void even(int arr[], int size)
 	int i = 0;
 	for (int j = 0; j < size; j++)
 	{
-		if (j / 2 == 0)
-		{
-			arr[j] = i;
-		}
-
-		i++;
+		arr[j] = i + 2;
 	}
 }
 
@@ -129,8 +125,7 @@ void reverse(char* Arr[], int size)
 	int i = 0;
 	while (i < size)
 	{
-		
-		Arr[i] = { Arr[size - i / 2] };
+		Arr[i] = { Arr[size - i -1] };
 		i++;
 	}
 }
@@ -140,17 +135,10 @@ void Namer()
 {
 	int i = 0;
 	int j = 65;
-	Cat N;
 	while (i < 26)
 	{
-		if (i / 2 == 0)
-		{
-			N.NameMe(j);
-		}
-		else
-		{
-			N.NameMe(j + 32);
-		}
+		Cat Namez[26];
+		
 		i++;
 		j++;
 	}
@@ -160,21 +148,26 @@ void Namer()
 //Problem 5
 int most(int nums[], int size)
 {
-	int times = 0;
-	int Most;
-	for (int i = 0; i < size; i++)
+	int max_count = 0;
+	int i = 0;
+	for (; i<5; i++)
 	{
-		int j=0;
-		int tmp = nums[j];
-		for (j; j < size; j++);
-		{
-			if (tmp == nums[i])
-			{
-				Most = nums[i];
-			}
-		}
+		int count = 1;
+		for (int j = i + 1; j<size; j++)
+			if (nums[i] == nums[j])
+				count++;
+		if (count>max_count)
+			max_count = count;
 	}
-	return Most;
+
+	for (; i<size; i++)
+	{
+		int count = 1;
+		for (int j = i + 1; j<5; j++)
+			if (nums[i] == nums[j])
+				count++;
+	}
+	return nums[i];
 }
 
 //Problem 6
